@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap Toggle -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <title>vMix Replay Tagging</title>
+</head>
+<style>
+    h3.card-title {
+/*
+text-align: center;
+font-weight: bold;
+*/
+}
+.card{
+    margin-bottom: 10px;
+}
+.card-body .row{
+        margin-bottom: 10px;
+}
+body{background-color: #000; }
+
+</style>
+
+<body>
+    <div class="container">
+
+
+        <br>
+        <div class="row  justify-content-center">
+            <div class="col-lg-6">
+
+
+                <div id="replay-tags" class="">
+
+
+                        <div class="card card-default">
+                            <div class="card-header">
+                                Replay Tags
+                            </div>
+                            <div class="card-body ">
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input id="tag-cam-1" type="checkbox" data-toggle="toggle" data-size="sm" data-on="CAM 1" data-off="OFF" checked>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <input id="tag-cam-2" type="checkbox" data-toggle="toggle" data-size="sm" data-on="CAM 2" data-off="OFF">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <input id="tag-cam-3" type="checkbox" data-toggle="toggle" data-size="sm" data-on="CAM 3" data-off="OFF">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <input id="tag-cam-4" type="checkbox" data-toggle="toggle" data-size="sm" data-on="CAM 4" data-off="OFF">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div id="AwayTeamTags" class="col-6">'
+                                        <!-- Away Team Tag Buttons -->
+
+                                    </div>
+
+                                    <div id="HomeTeamTags" class="col-6">'
+                                        <!-- Home Team Tag Buttons -->
+                                    </div>
+                                </div>
+                            
+
+                                <div class="row">
+                                    <div class="col-12" id="GeneralTags">
+                                        <!-- Genral Tag Buttons -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-default">
+                            <div class="card-header">
+                                Select Camera Angle
+                            </div>
+                            <div class="card-body row">
+                                <div class="col-3">
+                                    <a class="vmix-cam btn btn-primary btn-lg btn-block " id="1">1</a>
+                                </div>
+                                <div class="col-3">
+                                    <a class="vmix-cam btn btn-primary btn-lg btn-block " id="2">2</a>
+                                </div>
+                                <div class="col-3">
+                                    <a class="vmix-cam btn btn-primary btn-lg btn-block " id="3">3</a>
+                                </div>
+                                <div class="col-3">
+                                    <a class="vmix-cam btn btn-primary btn-lg btn-block " id="4">4</a>
+                                </div>
+                            </div>
+                        </div>
+<div class="row">
+
+                                <div class="col-8">
+                                    <a id="VMIX_TARGET" target="_blank" class="btn btn-dark btn-block btn-sm" href="wu-126977.willamette.edu:8088">wu-126977.willamette.edu:8088</a>
+                                </div>
+
+                                <div class="col-4">
+                                    <a class="btn btn-dark btn-block btn-sm" id="setup"> Setup</a>
+                                </div>
+
+                            </div>
+                    
+                </div>
+
+                <div id="settings" class="" >
+                    <div class="card card-default">
+                        <div class="card-header">
+                            Edit Team Names
+                        </div>
+                        <div class="card-body  d-grid gap-2">
+                            <div class="form-group">
+                                <label for="SPORT">SPORT</label>
+                                <select type="text" class="form-control" id="SPORT" name="SPORT">
+                                    <option value="basketball">Basketball</option>
+                                    <option value="lacrosse">Lacrosse</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AWAY_TEAM">Away Team</label>
+                                <input type="text" class="form-control" id="AWAY_TEAM" name="AWAY_TEAM" value="Away">
+                            </div>
+                            <div class="form-group">
+                                <label for="HOME_TEAM">Home Team</label>
+                                <input type="text" class="form-control" id="HOME_TEAM" name="HOME_TEAM" value="Willamette">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Name">vMix URL</label>
+
+
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="VMIX" name="VMIX" value="">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                                        <div class="dropdown-menu" id="vmix-system">
+                                            <a class="dropdown-item" value="wu-126977.willamette.edu">Optiplex</a>
+                                            <a class="dropdown-item" value="wu-174724.willamette.edu">Skull Canyon</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000" style="width:250px;">
+    <div class="toast-header">
+      <strong class="mr-auto">vMix Replay</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body" id="toast-content">
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+<script>
+
+    $("#submit").click(function() {
+        sport = $("#SPORT").val()
+        vmix = $("#VMIX").val()
+        home_team = $("#HOME_TEAM").val()
+        away_team = $("#AWAY_TEAM").val()
+        json_file = "buttons-" + sport + ".json"
+
+        $("#VMIX_TARGET").text(vmix)
+        $("#VMIX_TARGET").attr("href",vmix + ":8088")
+
+
+        $.getJSON( json_file, function( data ) {
+            //console.log(data);
+            $("#AwayTeamTags").text("")
+            $("#HomeTeamTags").text("")
+            $("#GeneralTags").text("")
+
+            for (var key of Object.keys(data["TeamTags"])) {
+
+                ButonLabel = key.replace("HOME_AWAY",away_team);
+                ButtonValued = data["TeamTags"][key].replace("HOME_AWAY",away_team);
+                $("#AwayTeamTags").append('<a class="vmix btn btn-md btn-block btn-success" id="' +ButtonValued+'">'+ButonLabel+'</a>')
+
+                ButonLabel = key.replace("HOME_AWAY",home_team);
+                ButtonValued = data["TeamTags"][key].replace("HOME_AWAY",home_team);
+                $("#HomeTeamTags").append('<a class="vmix btn btn-md btn-block btn-danger" id="' +ButtonValued+'">'+ButonLabel+'</a>')
+            }
+
+            for (var key of Object.keys(data["GeneralTags"])) {
+
+                ButonLabel = key;
+                ButtonValued = data["GeneralTags"][key]
+                $("#GeneralTags").append('<a class="vmix btn btn-info btn-md btn-block"" id="' +ButtonValued+'">'+ButonLabel+'</a>')
+            }
+
+        });
+
+        $("#settings").hide()
+        $("#replay-tags").show()
+        $("#setup").show()
+
+    });
+
+    $("#vmix-system A").click(function() {
+        value = $(this).attr("value")
+        $("#VMIX").val(value)
+
+    });
+
+    $(".vmix-cam").click(function() {
+        value = $(this).attr("id");
+        vmix = $("#VMIX").val()
+        url = "http://" + vmix + ":8088/api/?Function=ReplaySelectedEventSingleCameraOn&value=" + value;
+        console.log(url)
+        fetch(url).catch(function(err) {console.log('Fetch Error: ', err);});
+
+        $('#toast-content').text("Selected Camera " + value)
+        $('#liveToast').toast('show')
+    });
+
+    $('body').on('click', 'a.vmix', function() {
+        value = $(this).attr("id");
+        vmix = $("#VMIX").val()
+        baseurl = "http://" + vmix + ":8088/api/?Function=ReplaySetSelectedEventTextCamera&value=";
+        camera = "";
+
+        if($("#tag-cam-1").is(":checked"))
+        {
+            url = baseurl+"1,"+ value;
+            fetch(url).catch(function(err) {console.log('Fetch Error: ', err); });
+            camera = camera + "1, "
+        }
+        if($("#tag-cam-2").is(":checked"))
+        {
+            url = baseurl+"2,"+ value;
+            fetch(url).catch(function(err) {console.log('Fetch Error: ', err); });
+            camera = camera + "2, "
+        }
+        if($("#tag-cam-3").is(":checked"))
+        {
+            url = baseurl+"3,"+ value;
+            fetch(url).catch(function(err) {console.log('Fetch Error: ', err); });
+            camera = camera + "3, "
+        }
+        if($("#tag-cam-4").is(":checked"))
+        {
+            url = baseurl+"4,"+ value;
+            fetch(url).catch(function(err) {console.log('Fetch Error: ', err); });
+            camera = camera + "4, "
+
+        }
+
+        $('#toast-content').html("<strong>Tags:</strong> " + value)
+        $('#toast-content').append("<br><strong>Cameras:</strong> " + camera.slice(0, -2))
+        $('#liveToast').toast('show')
+    });
+
+    $("#setup").click(function() {
+        $("#settings").show()
+        $("#replay-tags").hide()
+    });
+
+
+    $( document ).ready(function() {
+        
+        $("#replay-tags").hide()
+    });
+
+</script>
+
+</html>
+

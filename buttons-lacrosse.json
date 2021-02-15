@@ -1,0 +1,11 @@
+{
+  "TeamTags": {
+    "HOME_AWAY": "HOME_AWAY",
+    "HOME_AWAY ★": "HOME_AWAY ★",
+    "HOME_AWAY Goal": "HOME_AWAY Goal",
+    "HOME_AWAY Injury": "HOME_AWAY Injury"
+  },
+  "GeneralTags": {
+    "Clear": ""
+  }
+}

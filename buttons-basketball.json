@@ -1,0 +1,13 @@
+{
+  "TeamTags": {
+    "HOME_AWAY": "HOME_AWAY",
+    "HOME_AWAY ★": "HOME_AWAY ★",
+    "HOME_AWAY 3 PT": "HOME_AWAY 3 PT",
+    "HOME_AWAY Dunk": "HOME_AWAY Dunk",
+    "HOME_AWAY Injury": "HOME_AWAY Injury"
+  },
+  "GeneralTags": {
+    "Foul": "Foul",
+    "Clear": ""
+  }
+}
