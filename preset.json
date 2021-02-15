@@ -8,6 +8,6 @@
   "SportPresets": {
   	"Default":"buttons-default.json",
     "Basketball": "buttons-basketball.json",
-    "Lacrosse":"button-lacrosse.json"
+    "Lacrosse":"buttons-lacrosse.json"
   }
 }
