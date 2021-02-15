@@ -1,0 +1,13 @@
+{
+  "HomeName":"Home",
+  "AwayName":"Away",
+  "vmixurls": {
+    "vMix #1": "192.168.1.101",
+    "vMix #2": "192.168.1.102"
+  },
+  "SportPresets": {
+  	"Default":"buttons-default.json",
+    "Basketball": "buttons-basketball.json",
+    "Lacrosse":"button-lacrosse.json"
+  }
+}

@@ -22,6 +22,8 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <title>vMix Replay Tagging</title>
+
+
 </head>
 <style>
     h3.card-title {
@@ -41,6 +43,7 @@ body{background-color: #000; }
 </style>
 
 <body>
+
     <div class="container">
 
 
@@ -119,7 +122,7 @@ body{background-color: #000; }
 <div class="row">
 
                                 <div class="col-8">
-                                    <a id="VMIX_TARGET" target="_blank" class="btn btn-dark btn-block btn-sm" href="wu-126977.willamette.edu:8088">wu-126977.willamette.edu:8088</a>
+                                    <a id="VMIX_TARGET" target="_blank" class="btn btn-dark btn-block btn-sm" href="vmix.com:8088">vmix.com</a>
                                 </div>
 
                                 <div class="col-4">
@@ -139,18 +142,17 @@ body{background-color: #000; }
                             <div class="form-group">
                                 <label for="SPORT">SPORT</label>
                                 <select type="text" class="form-control" id="SPORT" name="SPORT">
-                                    <option value="basketball">Basketball</option>
-                                    <option value="lacrosse">Lacrosse</option>
+
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="AWAY_TEAM">Away Team</label>
-                                <input type="text" class="form-control" id="AWAY_TEAM" name="AWAY_TEAM" value="Away">
+                                <input type="text" class="form-control" id="AWAY_TEAM" name="AWAY_TEAM" value="">
                             </div>
                             <div class="form-group">
                                 <label for="HOME_TEAM">Home Team</label>
-                                <input type="text" class="form-control" id="HOME_TEAM" name="HOME_TEAM" value="Willamette">
+                                <input type="text" class="form-control" id="HOME_TEAM" name="HOME_TEAM" value="">
                             </div>
 
                             <div class="form-group">
@@ -161,14 +163,15 @@ body{background-color: #000; }
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="VMIX" name="VMIX" value="">
 
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                                        <div class="dropdown-menu" id="vmix-system">
-                                            <a class="dropdown-item" value="wu-126977.willamette.edu">Optiplex</a>
-                                            <a class="dropdown-item" value="wu-174724.willamette.edu">Skull Canyon</a>
-                                        </div>
+                                    
+                                    <div id="vmix-systems" class="input-group-append" style="display: none;">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">vMix Systems</button>
+                                        <div class="dropdown-menu" id="vmix-system"></div>
                                     </div>
+
                                 </div>
+
+                                
                             </div>
 
                             <button id="submit" class="btn btn-primary btn-block">Submit</button>
@@ -205,7 +208,7 @@ body{background-color: #000; }
         vmix = $("#VMIX").val()
         home_team = $("#HOME_TEAM").val()
         away_team = $("#AWAY_TEAM").val()
-        json_file = "buttons-" + sport + ".json"
+        json_file = sport
 
         $("#VMIX_TARGET").text(vmix)
         $("#VMIX_TARGET").attr("href",vmix + ":8088")
@@ -243,7 +246,7 @@ body{background-color: #000; }
 
     });
 
-    $("#vmix-system A").click(function() {
+    $('body').on('click', '#vmix-system A', function() {
         value = $(this).attr("value")
         $("#VMIX").val(value)
 
@@ -306,6 +309,36 @@ body{background-color: #000; }
     $( document ).ready(function() {
         
         $("#replay-tags").hide()
+
+        //load settings.json
+        preset_file = "preset.json"
+        $.getJSON(preset_file, function( data ) {
+
+            $("#HOME_TEAM").val(data["HomeName"])
+            $("#AWAY_TEAM").val(data["AwayName"])
+
+
+            count=0
+            $.each(data["vmixurls"], function(label, url){
+                $("#vmix-system").append('<a class="dropdown-item" value="'+url+'">'+label+'</a>')
+                count++
+            });
+            obj = data["vmixurls"]
+
+            $("#VMIX").val(obj[Object.keys(obj)[0]])
+
+            if(count>1){
+                $("#vmix-systems").show()
+            }
+
+
+            $.each(data["SportPresets"], function(label, file){
+                $("#SPORT").append('<option value="'+file+'">'+label+'</option>')
+            });
+
+            
+        });
+
     });
 
 </script>
